@@ -94,8 +94,48 @@ public class Main extends Application {
 
                     Food food = getTableView().getItems().get(getIndex());
 
-                    nameField.setText(food.getName());
-                    priceField.setText(food.getPrice().toString());
+                    Stage editStage = new Stage();
+                    editStage.setTitle("Editar comida");
+
+                    TextField nameEdit = new TextField(food.getName());
+                    TextField priceEdit = new TextField(food.getPrice().toString());
+
+                    Button saveBtn = new Button("Salvar");
+
+                    saveBtn.setOnAction(ev -> {
+
+                        try{
+
+                            food.setName(nameEdit.getText());
+                            food.setPrice(Double.parseDouble(priceEdit.getText()));
+
+                            ApiService.updateFood(food);
+
+                            loadFoods();
+
+                            editStage.close();
+
+                        }catch(Exception ex){
+                            ex.printStackTrace();
+                        }
+
+                    });
+
+                    VBox layout = new VBox(
+                            10,
+                            new Label("Nome"),
+                            nameEdit,
+                            new Label("Preço"),
+                            priceEdit,
+                            saveBtn
+                    );
+
+                    layout.setPadding(new Insets(20));
+
+                    Scene scene = new Scene(layout,300,200);
+
+                    editStage.setScene(scene);
+                    editStage.show();
 
                 });
             }
@@ -149,8 +189,7 @@ public class Main extends Application {
 
         });
 
-        //table.getColumns().addAll(colId, colName, colPrice, editCol, deleteCol);
-
+        // ADICIONAR COLUNAS
         table.getColumns().add(colId);
         table.getColumns().add(colName);
         table.getColumns().add(colPrice);
