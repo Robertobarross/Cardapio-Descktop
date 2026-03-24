@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.1
+Build-Jdk-Spec: 25
+Class-Path: javafx-controls-21.jar javafx-controls-21-win.jar javafx-gra
+ phics-21.jar javafx-graphics-21-win.jar javafx-base-21.jar javafx-base-
+ 21-win.jar javafx-fxml-21.jar javafx-fxml-21-win.jar jackson-databind-2
+ .17.0.jar jackson-annotations-2.17.0.jar jackson-core-2.17.0.jar byte-b
+ uddy-1.14.9.jar
+Main-Class: com.cardapio.Main
+JavaFX-Version: 21
+
